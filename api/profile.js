@@ -11,6 +11,7 @@ module.exports.profileRead = function(req, res) {
     User
       .findById(req.payload._id)
       .exec(function(err, user) {
+        if (err) { res.json({ "message" : "User not found in Database"}); }
         res.status(200).json(user);
       });
   }
